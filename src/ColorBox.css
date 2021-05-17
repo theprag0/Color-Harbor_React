@@ -7,13 +7,13 @@
 }
 
 .copy-button{
-    width: 100px;
+    width: 90px;
     height: 30px;
     position: absolute;
     display: inline-block;
     top: 50%;
     left: 50%;
-    margin-left: -50px;
+    margin-left: -45px;
     margin-top: -15px;
     outline: none;
     border: none;
@@ -50,10 +50,10 @@
     background-color: rgba(255, 255, 255, 0.3);
     color: #fff;
     border: none;
-    width: 60px;
-    height: 30px;
+    width: 50px;
+    height: 25px;
     font-size: 13px;
     text-align: center;
-    line-height: 30px;
+    line-height: 25px;
     text-transform: uppercase;
 }
