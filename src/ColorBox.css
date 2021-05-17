@@ -111,6 +111,7 @@
 }
 
 .copy-msg p{
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 100;
+    color: rgba(255, 255, 255, 0.5);
 }
