@@ -1,4 +1,4 @@
-export default {
+const styles = {
     root: {
         backgroundColor: "#fff",
         borderRadius: "5px",
@@ -39,3 +39,5 @@ export default {
         position: "relative",
     }
 };
+
+export default styles;

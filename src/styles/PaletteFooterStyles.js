@@ -1,4 +1,4 @@
-export default {
+const styles = {
     footer: {
         backgroundColor: "#fff",
         height: "5vh",
@@ -11,4 +11,6 @@ export default {
         fontSize: "1rem", 
         margin: "0 1rem" 
     }
-}
+};
+
+export default styles;
