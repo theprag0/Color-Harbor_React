@@ -123,7 +123,7 @@ const styles = {
         transition: "all 0.4s ease-in-out",
         transitionDelay: "0.3s"
     }
-}
+};
 
 class ColorBox extends Component{
     constructor(props) {

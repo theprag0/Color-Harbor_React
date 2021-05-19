@@ -1,20 +1,20 @@
-.ColorBox{
+/* .ColorBox{
     width: 20%;
     height: 25%;
     margin: 0 auto;
     position: relative;
     cursor: pointer;
-}
+} */
 /* .SingleColorPalette .ColorBox{
     height: 50%;
 } */
 
-.ColorBox.go-back{
+/* .ColorBox.go-back{
    background-color: #000;
    height: 50%;
-}
+} */
 
-.copy-button,
+/* .copy-button,
 .back-button{
     width: 90px;
     height: 30px;
@@ -33,7 +33,7 @@
     line-height: 30px;
     text-transform: uppercase;
     text-decoration: none;
-}
+} */
 /* .copy-button{
     opacity: 0;
 }
