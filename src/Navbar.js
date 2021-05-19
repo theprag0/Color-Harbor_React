@@ -50,10 +50,10 @@ class Navbar extends Component{
                     </div>
                 </div>
                 <div className="select-container">
-                    <Select value={format} onChange={this.handleFormatChange} size="small">
-                        <MenuItem value="hex">HEX - #ffffff</MenuItem>
-                        <MenuItem value="rgb">RGB - rgb(255, 255, 255)</MenuItem>
-                        <MenuItem value="rgba">RGBA - rgba(255, 255, 255, 1.0)</MenuItem>
+                    <Select value={format} onChange={this.handleFormatChange} style={{fontSize: "0.85rem"}}>
+                        <MenuItem value="hex" style={{fontSize: "0.85rem"}}>HEX - #ffffff</MenuItem>
+                        <MenuItem value="rgb" style={{fontSize: "0.85rem"}}>RGB - rgb(255, 255, 255)</MenuItem>
+                        <MenuItem value="rgba" style={{fontSize: "0.85rem"}}>RGBA - rgba(255, 255, 255, 1.0)</MenuItem>
                     </Select>
                 </div>
                 <Snackbar 
