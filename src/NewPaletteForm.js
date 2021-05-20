@@ -59,6 +59,8 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     height: "calc(100vh - 64px)",
+    display: "flex",
+    flexDirection: "column",
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -72,6 +74,13 @@ const styles = theme => ({
     }),
     marginLeft: 0,
   },
+  boxes: {
+    height: "100%",
+    display: "flex", 
+    flexWrap: "wrap",
+    alignContent: "flex-start",
+    marginTop: "1.3rem"
+  }
 });
 
 class NewPaletteForm extends Component{
@@ -80,7 +89,7 @@ class NewPaletteForm extends Component{
         this.state = {
             open: true,
             currentColor: '',
-            colors: [{color: 'blue', name: 'blue'}],
+            colors: [{color: '#C32626', name: 'matte red'}],
             newColorName: "",
             newPaletteName: ""
         };
@@ -241,9 +250,11 @@ class NewPaletteForm extends Component{
                     })}
                 >
                     <div className={classes.drawerHeader} />
+                    <div className={classes.boxes}>
                     {this.state.colors.map(c => {
                       return <DraggableColorBox color={c.color} name={c.name}/>
                     })}
+                    </div>
                 </main>
             </div>
         );
