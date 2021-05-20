@@ -79,14 +79,16 @@ class NewPaletteForm extends Component{
         super(props);
         this.state = {
             open: true,
-            currentColor: '#8E108E',
+            currentColor: '',
             colors: [{color: 'blue', name: 'blue'}],
-            newName: ""
+            newColorName: "",
+            newPaletteName: ""
         };
         this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
         this.handleDrawerClose = this.handleDrawerClose.bind(this);
         this.handleColorChange = this.handleColorChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.addNewColor = this.addNewColor.bind(this);
     }
     
@@ -99,6 +101,11 @@ class NewPaletteForm extends Component{
       ValidatorForm.addValidationRule("isColorUnique", value =>
         this.state.colors.every(
           ({ color }) => color !== this.state.currentColor
+        )
+      );
+      ValidatorForm.addValidationRule("isPaletteNameUnique", value =>
+        this.props.palettes.every(
+          ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
         )
       );
     }
@@ -116,14 +123,25 @@ class NewPaletteForm extends Component{
     }
 
     addNewColor() {
-      let newColor = {color: this.state.currentColor, name: this.state.newName}
-      this.setState({colors : [...this.state.colors, newColor], newName: ""});
+      let newColor = {color: this.state.currentColor, name: this.state.newColorName}
+      this.setState({colors : [...this.state.colors, newColor], newColorName: ""});
     }
 
     handleChange(e) {
       this.setState({
-        newName: e.target.value
+        [e.target.name]: e.target.value
       });
+    }
+
+    handleSubmit() {
+      let newName = this.state.newPaletteName;
+      const newPalette = {
+        paletteName: newName,
+        id: newName.toLowerCase().replace(/ /g, "-"),
+        colors: this.state.colors
+      };
+      this.props.savePalette(newPalette);
+      this.props.history.push("/");
     }
 
     render() {
@@ -135,6 +153,7 @@ class NewPaletteForm extends Component{
                 <CssBaseline />
                 <AppBar
                     position="fixed"
+                    color="default"
                     className={classNames(classes.appBar, {
                     [classes.appBarShift]: open,
                     })}
@@ -151,6 +170,19 @@ class NewPaletteForm extends Component{
                     <Typography variant="h6" color="inherit" noWrap>
                         Persistent drawer
                     </Typography>
+                    <ValidatorForm onSubmit={this.handleSubmit} autoComplete="off">
+                      <TextValidator 
+                        value={this.state.newPaletteName}
+                        label="Palette Name"
+                        name="newPaletteName"
+                        onChange={this.handleChange}
+                        validators={['required', 'isPaletteNameUnique']}
+                        errorMessages={['Enter Palette Name', 'Name already used']}
+                      />
+                    <Button variant="contained" color="primary" type="submit">
+                      Save Palette
+                    </Button>
+                    </ValidatorForm>
                     </Toolbar>
                 </AppBar>
                 <Drawer
@@ -179,12 +211,13 @@ class NewPaletteForm extends Component{
                     <ValidatorForm
                       ref="form"
                       onSubmit={this.addNewColor}
-                      autocomplete="off"
+                      autoComplete="off"
                     >
                       <TextValidator
                           onChange={this.handleChange}
-                          name="newName"
-                          value={this.state.newName}
+                          name="newColorName"
+                          label="Color Name"
+                          value={this.state.newColorName}
                           validators={['required', 'isColorNameUnique', 'isColorUnique']}
                           errorMessages={
                             ['this field is required', 
