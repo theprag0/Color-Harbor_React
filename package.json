@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "array-move": "^3.0.1",
     "chroma-js": "^2.1.1",
     "rc-slider": "^9.7.2",
     "react": "^17.0.2",
