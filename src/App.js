@@ -16,6 +16,7 @@ class App extends Component {
       palettes: savedPalettes || seedColors
     };
     this.savePalette = this.savePalette.bind(this);
+    this.deletePalette = this.deletePalette.bind(this);
   }
 
   savePalette(newPalette) {
@@ -26,6 +27,12 @@ class App extends Component {
     return this.state.palettes.find(palette => {
       return palette.id === id;
     });
+  }
+
+  deletePalette(id) {
+    this.setState(st => (
+      {palettes: st.palettes.filter(palette => palette.id !== id)}
+    ), this.syncLocalStorage);
   }
 
   syncLocalStorage() {
@@ -46,7 +53,11 @@ class App extends Component {
           exact 
           path="/" 
           render={(routeProps) => (
-            <PaletteList palettes={this.state.palettes} {...routeProps}/>
+            <PaletteList 
+              palettes={this.state.palettes} 
+              deletePalette={this.deletePalette} 
+              {...routeProps}
+            />
           )}
         />
         <Route 
