@@ -8,8 +8,7 @@ const styles = {
         height: "100%",
         display: "flex", 
         flexWrap: "wrap",
-        alignContent: "flex-start",
-        marginTop: "1.3rem"
+        alignContent: "flex-start"
     }
 }
 
