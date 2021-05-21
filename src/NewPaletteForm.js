@@ -36,7 +36,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    height: "calc(100vh - 64px)",
+    height: "100vh",
     display: "flex",
     flexDirection: "column",
     transition: theme.transitions.create('margin', {
