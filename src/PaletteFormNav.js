@@ -49,7 +49,8 @@ const styles = theme => ({
         }
     },
     btn: {
-        margin: "0 0.5rem"
+        margin: "0 0.5rem",
+        textTransform: "uppercase"
     }
 });
 
@@ -62,6 +63,7 @@ class PaletteFormNav extends Component{
         }
         this.handleChange = this.handleChange.bind(this);
         this.showForm = this.showForm.bind(this);
+        this.hideForm = this.hideForm.bind(this);
     }
 
     handleChange(e) {
@@ -72,6 +74,10 @@ class PaletteFormNav extends Component{
 
     showForm() {
         this.setState({formShowing: true});
+    }
+
+    hideForm() {
+        this.setState({formShowing: false});
     }
 
     render() {
@@ -112,12 +118,16 @@ class PaletteFormNav extends Component{
                             size="small" 
                             className={classes.btn}
                         >
-                            Save
+                            Save Palette
                         </Button>
                     </div>
                 </AppBar>
                 {this.state.formShowing &&
-                    <PaletteMetaForm handleSubmit={handleSubmit} palettes={palettes}/>
+                    <PaletteMetaForm 
+                        handleSubmit={handleSubmit} 
+                        palettes={palettes} 
+                        hideForm={this.hideForm}
+                    />
                 }
             </div>
         );

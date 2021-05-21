@@ -57,7 +57,7 @@ const styles = theme => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: "90%",
+    width: "80%",
     height: "85%",
   },
   buttons: {
