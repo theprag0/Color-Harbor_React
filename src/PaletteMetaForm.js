@@ -13,12 +13,14 @@ class PaletteMetaForm extends Component{
     constructor(props){
         super(props);
         this.state = {
-            open: true,
+            stage: "form",
             newPaletteName: ''
         }
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.showEmojiPicker = this.showEmojiPicker.bind(this);
+        this.savePalette = this.savePalette.bind(this);
     }
 
     componentDidMount() {
@@ -43,17 +45,34 @@ class PaletteMetaForm extends Component{
         });
     }
     
+    showEmojiPicker() {
+        this.setState({stage: "emoji"});
+    }
+
+    savePalette(emoji) {
+        const newPalette = {
+            paletteName: this.state.newPaletteName,
+            emoji: emoji.native
+        };
+        this.props.handleSubmit(newPalette);
+    }
+
     render() {
-        const {handleSubmit, hideForm} = this.props;
+        const {hideForm} = this.props;
         const {newPaletteName} = this.state;
         return (
+            <div>
+            <Dialog open={this.state.stage === 'emoji'} onClose={hideForm}>
+                <DialogTitle id="form-dialog-title">Choose a Palette Emoji</DialogTitle>
+                <Picker title="Pick a palette emoji" onSelect={this.savePalette}/>
+            </Dialog>
             <Dialog
-                open={this.state.open}
-                onClose={this.handleClose}
+                open={this.state.stage === 'form'}
+                onClose={hideForm}
                 aria-labelledby="form-dialog-title"
                 maxWidth="sm"
             >
-                <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)} autoComplete="off">
+                <ValidatorForm onSubmit={this.showEmojiPicker} autoComplete="off">
                     <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
@@ -80,8 +99,8 @@ class PaletteMetaForm extends Component{
                     </Button>
                     </DialogActions>
                 </ValidatorForm>
-                <Picker />
             </Dialog>
+            </div>
         );
     }
 }
