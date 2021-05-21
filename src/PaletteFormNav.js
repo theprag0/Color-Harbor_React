@@ -42,7 +42,14 @@ const styles = theme => ({
     },
     navBtns: {
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        marginRight: "1rem",
+        "& a": {
+            textDecoration: "none"
+        }
+    },
+    btn: {
+        margin: "0 0.5rem"
     }
 });
 
@@ -50,15 +57,21 @@ class PaletteFormNav extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            newPaletteName: ""
+            newPaletteName: "",
+            formShowing: false
         }
         this.handleChange = this.handleChange.bind(this);
+        this.showForm = this.showForm.bind(this);
     }
 
     handleChange(e) {
         this.setState({
           [e.target.name]: e.target.value
         });
+    }
+
+    showForm() {
+        this.setState({formShowing: true});
     }
 
     render() {
@@ -87,14 +100,27 @@ class PaletteFormNav extends Component{
                     </Typography>
                     </Toolbar>
                     <div className={classes.navBtns}>
-                        <PaletteMetaForm handleSubmit={handleSubmit} palettes={palettes}/>
                         <Link to="/">
-                            <Button variant="contained" color="secondary" size="small">Go Back</Button>
+                            <Button variant="contained" color="secondary" size="small" className={classes.btn}>
+                                Go Back
+                            </Button>
                         </Link>
+                        <Button 
+                            variant="contained" 
+                            color="primary" 
+                            onClick={this.showForm} 
+                            size="small" 
+                            className={classes.btn}
+                        >
+                            Save
+                        </Button>
                     </div>
                 </AppBar>
+                {this.state.formShowing &&
+                    <PaletteMetaForm handleSubmit={handleSubmit} palettes={palettes}/>
+                }
             </div>
-        )
+        );
     }
 }
 
