@@ -9,6 +9,7 @@ const styles = {
         height: "90%", 
         display: "flex", 
         flexWrap: "wrap",
+        alignContent: "flex-start"
     },
     goBack: {
         width: "20%",
