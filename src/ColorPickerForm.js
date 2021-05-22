@@ -46,7 +46,7 @@ class ColorPickerForm extends Component{
     }
     render() {
         const {paletteIsFull, classes} = this.props;
-        const {currentColor} = this.state;
+        const {currentColor, newColorName} = this.state;
         return(
             <div style={{width: "100%"}}>
                 <ChromePicker 
@@ -64,7 +64,7 @@ class ColorPickerForm extends Component{
                         onChange={this.handleChange}
                         name="newColorName"
                         label="Color Name"
-                        value={this.state.newColorName}
+                        value={newColorName}
                         validators={['required', 'isColorNameUnique', 'isColorUnique']}
                         errorMessages={
                         ['Enter color name', 
