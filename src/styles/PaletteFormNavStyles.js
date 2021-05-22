@@ -13,7 +13,10 @@ const styles = theme => ({
         }),
         flexDirection: "row",
         justifyContent: "space-between",
-        height: "64px"
+        height: "64px",
+        [sizes.down("xs")]: {
+            height: "55px"
+        }
     },
     appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -44,9 +47,6 @@ const styles = theme => ({
     btn: {
         margin: "0 0.5rem",
         textTransform: "uppercase",
-        [sizes.down("md")]: {
-            fontSize: "0.6rem"
-        },
         [sizes.down("xs")]: {
             margin: "0"
         }
