@@ -59,6 +59,7 @@ class ColorPickerForm extends Component{
                     ref="form"
                     onSubmit={this.handleSubmit}
                     autoComplete="off"
+                    instantValidate={false}
                 >
                     <TextValidator
                         onChange={this.handleChange}

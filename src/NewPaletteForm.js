@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
 import arrayMove from 'array-move';
+import seedColors from './seedColors';
 import styles from './styles/NewPaletteFormStyles';
 
 class NewPaletteForm extends Component{
@@ -21,7 +22,7 @@ class NewPaletteForm extends Component{
         super(props);
         this.state = {
             open: true,
-            colors: this.props.palettes[0].colors,
+            colors: seedColors[0].colors,
         };
         this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
         this.handleDrawerClose = this.handleDrawerClose.bind(this);
