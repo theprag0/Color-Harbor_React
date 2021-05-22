@@ -1,3 +1,5 @@
+import sizes from './sizeHelpers';
+
 const styles = {
     Palette: {
         height: "100vh",
@@ -9,12 +11,11 @@ const styles = {
         height: "90%", 
         display: "flex", 
         flexWrap: "wrap",
-        alignContent: "flex-start"
+        alignContent: "flex-start",
     },
     goBack: {
         width: "20%",
         height: "50%",
-        margin: "0 auto",
         position: "relative",
         cursor: "pointer",
         backgroundColor: "#000",
@@ -35,7 +36,19 @@ const styles = {
             fontSize: "0.9rem",
             lineHeight: "30px",
             textTransform: "uppercase",
-            textDecoration: "none",
+            textDecoration: "none"
+        },
+        [sizes.down("lg")]: {
+            width: "25%",
+            height: "33.333%"
+        },
+        [sizes.down("md")]: {
+            width: "50%",
+            height: "20%"
+        },
+        [sizes.down("xs")]: {
+            width: "100%",
+            height: "10%"
         }
     }
 };
